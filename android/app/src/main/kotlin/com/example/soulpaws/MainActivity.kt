@@ -1,4 +1,4 @@
-package com.example.soulpaws
+package com.example.furryfriends
 
 import io.flutter.embedding.android.FlutterActivity
 
