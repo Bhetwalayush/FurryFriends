@@ -1,16 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:soulpaws/model/AdoptModel.dart';
+import 'package:furryfriends/model/AdoptModel.dart';
 
 import '../services/firebase_service.dart';
 
 class AdoptionCatRepo {
   CollectionReference<AdoptionModel> ref =
-  FirebaseService.db.collection("adoptCat").withConverter<AdoptionModel>(
-    fromFirestore: (snapshot, _) {
-      return AdoptionModel.fromFirebaseSnapshot(snapshot);
-    },
-    toFirestore: (model, _) => model.toJson(),
-  );
+      FirebaseService.db.collection("adoptCat").withConverter<AdoptionModel>(
+            fromFirestore: (snapshot, _) {
+              return AdoptionModel.fromFirebaseSnapshot(snapshot);
+            },
+            toFirestore: (model, _) => model.toJson(),
+          );
 
   Stream<QuerySnapshot<AdoptionModel>> getAdopts() {
     Stream<QuerySnapshot<AdoptionModel>> response = ref.snapshots();
@@ -24,6 +24,7 @@ class AdoptionCatRepo {
 
   Future<AdoptionModel?> deleteAdopt(String id) async {
     await ref.doc(id).delete();
+    return null;
   }
 
   Future<bool> addAdopt(AdoptionModel data) async {
