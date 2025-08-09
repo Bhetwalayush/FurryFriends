@@ -1,9 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:furryfriends/services/NotificationService.dart';
 import 'package:provider/provider.dart';
-import 'package:soulpaws/services/NotificationService.dart';
 
 import 'UserScreens/DrawerScreen.dart';
 import 'UserScreens/Favorite/FavoriteCats.dart';
@@ -13,8 +11,8 @@ import 'UserScreens/ListView/CatListView.dart';
 import 'UserScreens/ListView/DogListView.dart';
 import 'UserScreens/Payment.dart';
 import 'UserScreens/adoption.dart';
-import 'UserScreens/auth/SplashScreen.dart';
 import 'UserScreens/auth/ForgetPassword.dart';
+import 'UserScreens/auth/SplashScreen.dart';
 import 'UserScreens/auth/UserLogin.dart';
 import 'UserScreens/auth/UserRegistration.dart';
 import 'UserScreens/auth/account_screen.dart';
@@ -35,8 +33,9 @@ Future<void> main() async {
 
   await Firebase.initializeApp();
   NotificationService.initialize();
-  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: HomePage()));
-  runApp(MyApp());
+  runApp(
+      const MaterialApp(debugShowCheckedModeBanner: false, home: HomePage()));
+  runApp(const MyApp());
   // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
   //     overlays: [SystemUiOverlay.bottom]);
 }
@@ -60,44 +59,43 @@ class MyApp extends StatelessWidget {
               create: (_) => SingleDogViewModel()),
         ],
         child: MaterialApp(
-
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primarySwatch: Colors.grey,
           ),
           initialRoute: "/splash",
           routes: {
-            "/splash": (context) => Splash(),
-            "/UserLogin": (context) => UserLogin(),
-            "/ForgotPassword": (context) => ForgetPasswordScreen(),
-            "/Registration": (context) => UserRegistration(),
-            "/dashboard": (context) => HomePage(),
-            "/CatCategory": (context) => CatListView(),
-            "/DogCategory": (context) => DogListView(),
+            "/splash": (context) => const Splash(),
+            "/UserLogin": (context) => const UserLogin(),
+            "/ForgotPassword": (context) => const ForgetPasswordScreen(),
+            "/Registration": (context) => const UserRegistration(),
+            "/dashboard": (context) => const HomePage(),
+            "/CatCategory": (context) => const CatListView(),
+            "/DogCategory": (context) => const DogListView(),
             "/SubPage": (context) =>
                 SubScreen(null, null, null, null, null, null, null),
             "/SubPageCat": (context) =>
                 SubScreenCat(null, null, null, null, null, null, null),
-            "/FavoriteDogs": (context) => FavoriteDog(),
-            "/FavoriteCats": (context) => FavoriteCat(),
-            "/Profile": (context) => AccountScreen(),
-            "/Adoption": (context) => Adoption(),
-            "/HomeScreen":(context) => HomeScreen(),
-            "/Payment":(context) =>KhaltiPayment(),
-            "/Veterinary":(context) =>Veterinary(),
+            "/FavoriteDogs": (context) => const FavoriteDog(),
+            "/FavoriteCats": (context) => const FavoriteCat(),
+            "/Profile": (context) => const AccountScreen(),
+            "/Adoption": (context) => const Adoption(),
+            "/HomeScreen": (context) => const HomeScreen(),
+            "/Payment": (context) => const KhaltiPayment(),
+            "/Veterinary": (context) => Veterinary(),
           },
         ));
   }
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Stack(
-        children: const [DrawerScreen(), HomeScreen()],
+        children: [DrawerScreen(), HomeScreen()],
       ),
       // body: SubScreen(),
     );
