@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,7 +7,7 @@ import '../constants/Colors.dart';
 import '../constants/configuration.dart';
 
 class DrawerScreen extends StatefulWidget {
-  const DrawerScreen({Key? key}) : super(key: key);
+  const DrawerScreen({super.key});
 
   @override
   State<DrawerScreen> createState() => _DrawerScreenState();
@@ -38,12 +37,12 @@ class _DrawerScreenState extends State<DrawerScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Privacy Policy'),
-          content: Text(
-              "Ayush built the SOULPAWS app as an Open Source app. This SERVICE is provided by Ayush at no cost and is intended for use as is.This page is used to inform visitors regarding my policies with the collection, use, and disclosure of Personal Information if anyone decided to use my Service.If you choose to use my Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that I collect is used for providing and improving the Service. I will not use or share your information with anyone except as described in this Privacy Policy.The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which are accessible at SOULPAWS unless otherwise defined in this Privacy Policy."),
+          title: const Text('Privacy Policy'),
+          content: const Text(
+              "Ayush built the furryfriends app as an Open Source app. This SERVICE is provided by Ayush at no cost and is intended for use as is.This page is used to inform visitors regarding my policies with the collection, use, and disclosure of Personal Information if anyone decided to use my Service.If you choose to use my Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that I collect is used for providing and improving the Service. I will not use or share your information with anyone except as described in this Privacy Policy.The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which are accessible at furryfriends unless otherwise defined in this Privacy Policy."),
           actions: [
             TextButton(
-              child: Text('OK'),
+              child: const Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -65,21 +64,21 @@ class _DrawerScreenState extends State<DrawerScreen> {
   Widget build(BuildContext context) {
     return Container(
       color: BackColor,
-      padding: EdgeInsets.only(top: 50, bottom: 70, left: 10),
+      padding: const EdgeInsets.only(top: 50, bottom: 70, left: 10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
               InkWell(
-                child: CircleAvatar(
+                child: const CircleAvatar(
                   backgroundImage: AssetImage('Assets/img_4.png'),
                 ),
                 onTap: () {
                   Navigator.of(context).pushNamed("/Profile");
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Column(
@@ -87,9 +86,9 @@ class _DrawerScreenState extends State<DrawerScreen> {
                 children: [
                   Text(_auth.loggedInUser!.name.toString(),
                       // _auth.loggedInUser!.name.toString(),
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: textColor, fontWeight: FontWeight.bold)),
-                  Text(
+                  const Text(
                     "Online",
                     style: TextStyle(
                         color: Colors.green, fontWeight: FontWeight.bold),
@@ -135,9 +134,9 @@ class _DrawerScreenState extends State<DrawerScreen> {
                               color: Colors.white,
                               size: 30,
                             ),
-                            SizedBox(width: 10),
+                            const SizedBox(width: 10),
                             Text(elements['title'],
-                                style: TextStyle(
+                                style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15))
@@ -151,23 +150,23 @@ class _DrawerScreenState extends State<DrawerScreen> {
             // onTap: logout,
             child: Row(
               children: [
-                Icon(
+                const Icon(
                   Icons.settings,
                   color: Colors.white,
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 InkWell(
-                  child: Text("Privacy Policy",
+                  child: const Text("Privacy Policy",
                       style: TextStyle(
                           color: Colors.white, fontWeight: FontWeight.bold)),
                   onTap: () {
                     // _showPopup();
                   },
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Container(width: 2, height: 20, color: Colors.white),
-                SizedBox(width: 10),
-                Text("Log out",
+                const SizedBox(width: 10),
+                const Text("Log out",
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold)),
               ],
