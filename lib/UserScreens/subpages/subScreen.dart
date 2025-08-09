@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:soulpaws/ViewModel/DogViewModel.dart';
-import 'package:soulpaws/model/favDogModel.dart';
+import 'package:furryfriends/ViewModel/DogViewModel.dart';
+import 'package:furryfriends/model/favDogModel.dart';
 import 'package:provider/provider.dart';
 
 import '../../ViewModel/GlobalUIViewModel.dart';
@@ -21,8 +19,9 @@ class SubScreen extends StatefulWidget {
   final String? color;
   final int? price;
 
-  SubScreen(this.index, this.dogName, this.dogDescription, this.imageLink,
-      this.price, this.breed, this.color);
+  const SubScreen(this.index, this.dogName, this.dogDescription, this.imageLink,
+      this.price, this.breed, this.color,
+      {super.key});
 
   @override
   State<SubScreen> createState() => _SubScreenState();
@@ -47,7 +46,7 @@ class _SubScreenState extends State<SubScreen> {
 
     db.collection("favDog").add(data.toJson()).then((value) {
       print("Added Data with ID: ${value.id}");
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text(
         "Dog Added to Fav",
         style: TextStyle(color: Colors.white),
@@ -67,7 +66,7 @@ class _SubScreenState extends State<SubScreen> {
 
     db.collection("adopt").add(data.toJson()).then((value) {
       print("Added Data with ID: ${value.id}");
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text(
         "Dog Applied for Adoption",
         style: TextStyle(color: Colors.white),
@@ -132,7 +131,7 @@ class _SubScreenState extends State<SubScreen> {
                       right: MediaQuery.of(context).size.height * 0.03,
                       top: MediaQuery.of(context).size.height * 0.03,
                     ),
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
                             topRight: Radius.circular(40),
                             topLeft: Radius.circular(40)),
@@ -140,14 +139,14 @@ class _SubScreenState extends State<SubScreen> {
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             "Personality",
                             style: TextStyle(
                               fontSize: 25,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 5,
                           ),
                           Expanded(
@@ -165,15 +164,15 @@ class _SubScreenState extends State<SubScreen> {
                               breed: widget.breed!,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 15,
                           ),
                         ]))),
           ]),
           bottomNavigationBar: Container(
               height: 75,
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
+              padding: const EdgeInsets.all(20),
+              decoration: const BoxDecoration(
                   color: Color(0xfffcf4e4),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(40),
@@ -181,17 +180,17 @@ class _SubScreenState extends State<SubScreen> {
                   )),
               child: Align(
                   alignment: Alignment.bottomCenter,
-                  child: Container(
+                  child: SizedBox(
                     height: 100,
                     child: Row(
                       children: [
                         Container(
-                          margin: EdgeInsets.only(left: 15),
+                          margin: const EdgeInsets.only(left: 15),
                           height: 50,
                           width: 70,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            color: Color.fromRGBO(191, 134, 143, 30),
+                            color: const Color.fromRGBO(191, 134, 143, 30),
                           ),
                           child: InkWell(
                             onTap: () {
@@ -202,7 +201,7 @@ class _SubScreenState extends State<SubScreen> {
                             },
                             child: Icon(Icons.favorite,
                                 color: clicked
-                                    ? Color.fromRGBO(128, 0, 0, 10)
+                                    ? const Color.fromRGBO(128, 0, 0, 10)
                                     : Colors.white),
                           ),
                         ),
@@ -212,13 +211,13 @@ class _SubScreenState extends State<SubScreen> {
                             saveAdoption();
                           },
                           child: Container(
-                            margin: EdgeInsets.symmetric(horizontal: 15),
+                            margin: const EdgeInsets.symmetric(horizontal: 15),
                             height: 50,
                             decoration: BoxDecoration(
-                              color: Color.fromRGBO(191, 134, 143, 30),
+                              color: const Color.fromRGBO(191, 134, 143, 30),
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            child: Center(
+                            child: const Center(
                               child: Text(
                                 "Adoption",
                                 style: TextStyle(
